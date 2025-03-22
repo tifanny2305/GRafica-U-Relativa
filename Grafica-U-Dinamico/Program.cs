@@ -77,13 +77,13 @@ class CubeGame : GameWindow
     public CubeGame() : base(GameWindowSettings.Default, NativeWindowSettings.Default)
     {
         Size = new Vector2i(800, 600);
-        Title = "Grafica U Relativa";
+        Title = "Grafica U en 3D";
     }
 
     protected override void OnLoad()
     {
         base.OnLoad();
-        GL.ClearColor(0.2f, 0.2f, 0.2f, 1.0f);
+        GL.ClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 
         vertexArrayObject = GL.GenVertexArray();
         GL.BindVertexArray(vertexArrayObject);
@@ -145,10 +145,16 @@ class CubeGame : GameWindow
         GL.EnableVertexAttribArray(1);
     }
 
+    private Vector3 lastPosition = Vector3.Zero; // Guardar la última posición
+    private bool isMoving = false; // Flag para saber si la figura se está moviendo
+
     protected override void OnUpdateFrame(FrameEventArgs args)
     {
         base.OnUpdateFrame(args);
-        rotation += 1.5f * (float)args.Time;
+
+        // Guardar la posición anterior del cubo
+        Vector3 previousPosition = cubePosition;
+
         // Mover el cubo en función de las teclas presionadas
         if (KeyboardState.IsKeyDown(Keys.W)) cubePosition.Z -= moveSpeed * (float)args.Time;
         if (KeyboardState.IsKeyDown(Keys.S)) cubePosition.Z += moveSpeed * (float)args.Time;
@@ -156,8 +162,20 @@ class CubeGame : GameWindow
         if (KeyboardState.IsKeyDown(Keys.D)) cubePosition.X += moveSpeed * (float)args.Time;
         if (KeyboardState.IsKeyDown(Keys.Q)) cubePosition.Y -= moveSpeed * (float)args.Time;
         if (KeyboardState.IsKeyDown(Keys.E)) cubePosition.Y += moveSpeed * (float)args.Time;
-    }
 
+        // Verificar si la figura se está moviendo
+        if (cubePosition != previousPosition)
+        {
+            isMoving = true; // La figura se está moviendo
+            lastPosition = cubePosition; // Guardar la última posición
+        }
+        else if (isMoving)
+        {
+            // Si la figura dejó de moverse, imprimir la última posición
+            Console.WriteLine("Posición actual: " + lastPosition);
+            isMoving = false; // Reiniciar el flag
+        }
+    }
     //configura matrices y dibuja
     protected override void OnRenderFrame(FrameEventArgs args)
     {
@@ -184,8 +202,6 @@ class CubeGame : GameWindow
 
         SwapBuffers();
     }
-
-    
 
     //manejo de ventanas
     protected override void OnResize(ResizeEventArgs e)
