@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32413.511
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Grafica-U-Dinamico", "Grafica-U-Dinamico\Grafica-U-Dinamico.csproj", "{2E684039-7DC2-42EB-8CAA-0E1606864A2B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2E684039-7DC2-42EB-8CAA-0E1606864A2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E684039-7DC2-42EB-8CAA-0E1606864A2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E684039-7DC2-42EB-8CAA-0E1606864A2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E684039-7DC2-42EB-8CAA-0E1606864A2B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {761EDA42-E5E5-4F0B-B802-541D23A254A1}
+	EndGlobalSection
+EndGlobal
